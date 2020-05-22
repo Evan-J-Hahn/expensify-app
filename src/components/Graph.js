@@ -12,7 +12,7 @@ export class Graph extends React.Component {
         chartData.datasets[0].label = this.props.datasets[0].label
         chartData.datasets[0].data = this.props.datasets[0].data
         chartData.datasets[0].backgroundColor = this.props.datasets[0].backgroundColor
-        
+
         return (
             chartData
         )
