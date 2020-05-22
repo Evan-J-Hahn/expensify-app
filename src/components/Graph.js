@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 export class Graph extends React.Component {
     getData = (props) => {
         let chartData = {}
+
         chartData.labels = this.props.labels
         chartData.datasets = []
         chartData.datasets[0] = {}
@@ -36,19 +37,21 @@ export class Graph extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    let descriptions = []
-    let amounts = []
+    let dataObj = {}
     
     for (let i = 0; i < state.expenses.length; i++) {
-        descriptions.push(state.expenses[i].description)
-        amounts.push(state.expenses[i].amount / 100)
+        if (dataObj.hasOwnProperty(state.expenses[i].description)) {
+            dataObj[state.expenses[i].description] += state.expenses[i].amount / 100
+        } else {
+            dataObj[state.expenses[i].description] = state.expenses[i].amount / 100
+        }
     }
 
     return {
-        labels: descriptions,
+        labels: Object.keys(dataObj),
         datasets: [{
             label: 'Expenses',
-            data: amounts,
+            data: Object.values(dataObj),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
                 'rgba(54, 162, 235, 0.6)',
@@ -56,7 +59,10 @@ const mapStateToProps = (state) => {
                 'rgba(75, 192, 192, 0.6)',
                 'rgba(153, 102, 255, 0.6)',
                 'rgba(255, 159, 64, 0.6)',
-                'rgba(255, 99, 132, 0.6)'
+                'rgba(225, 198, 172, 0.6)',
+                'rgba(194, 213, 167, 0.6)',
+                'rgba(226, 169, 190, 0.6)',
+                'rgba(176, 171, 202, 0.6)',
             ]
         }]
     }
