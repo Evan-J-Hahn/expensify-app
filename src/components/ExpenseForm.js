@@ -71,13 +71,10 @@ export default class ExpenseForm extends React.Component {
                 >
                     <option value="">Select Expense Type</option>
                     <option value="Housing">Housing</option>
-                    <option value="Transportation">Transportation</option>
                     <option value="Food">Food</option>
                     <option value="Utilities">Utilities</option>
                     <option value="Insurance">Insurance</option>
                     <option value="Medical">Medical</option>
-                    <option value="Investments">Investments</option>
-                    <option value="Personal Spending">Personal Spending</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Miscellaneous">Miscellaneous</option>
                 </select>
